@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css')}}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <title>RPi Carousel Manager</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>RPi Carousel Manager</h1>
-        
-        <form method="post">
-            <label for="image"></label>
-            <input type="file" name="file" id="image">
-            <button>Upload</button>
-        </form>
-        
+      <h1>RPi Carousel Manager</h1>
+
+      <form method="post">
+        <label for="image"></label>
+        <input type="file" name="file" id="image" />
+        <button>Upload</button>
+      </form>
     </div>
-</body>
+  </body>
 </html>
