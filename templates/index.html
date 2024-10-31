@@ -36,19 +36,23 @@
   </body>
 
   <script>
+    let isDark = localStorage.getItem("isDark") === "true";
     document
       .getElementsByClassName("dark-mode-button")[0]
       .addEventListener("click", changeMode);
 
     function changeMode() {
       const body = document.body;
-      if (body.classList.contains("dark-mode")) {
+      if (isDark) {
         body.classList.remove("dark-mode");
         body.classList.add("light-mode");
+        isDark = false;
       } else {
         body.classList.add("dark-mode");
         body.classList.remove("light-mode");
+        isDark = true;
       }
+      localStorage.setItem("isDark", isDark);
     }
   </script>
 </html>
