@@ -17,17 +17,18 @@
     <div id="file-upload-container">
       <h1>RPi Carousel Manager</h1>
 
-      <form method="post">
+      <form action="/upload" enctype="multipart/form-data" method="post" id="upload-form">
         <label for="image">Choose File</label>
-        <input type="file" name="file" id="image" />
-        <button>Upload</button>
+        <input type="file" name="file" id="image" accept="image/*" required />
+        <button id="file-upload-button">Upload</button>
       </form>
+      <p id="upload-status"></p>
     </div>
 
     <div id="display-mode-container">
       <button>
         <img
-          class="dark-mode-button"
+          id="display-mode-button"
           src="https://www.freeiconspng.com/thumbs/up-arrow-png/black-up-arrow-png-22.png"
           alt="Dark mode enable/disable"
         />
@@ -35,24 +36,5 @@
     </div>
   </body>
 
-  <script>
-    let isDark = localStorage.getItem("isDark") === "true";
-    document
-      .getElementsByClassName("dark-mode-button")[0]
-      .addEventListener("click", changeMode);
-
-    function changeMode() {
-      const body = document.body;
-      if (isDark) {
-        body.classList.remove("dark-mode");
-        body.classList.add("light-mode");
-        isDark = false;
-      } else {
-        body.classList.add("dark-mode");
-        body.classList.remove("light-mode");
-        isDark = true;
-      }
-      localStorage.setItem("isDark", isDark);
-    }
-  </script>
+  <script src="{{url_for('static', filename='script.js')}}"></script>
 </html>
