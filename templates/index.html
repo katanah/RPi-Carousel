@@ -14,10 +14,34 @@
     <title>RPi Carousel Manager</title>
   </head>
   <body class="light-mode">
+    <header>
+      <nav>
+        <div id="logo"><h2>Carousel</h1></div>
+        <div id="links">
+          <ul>
+            <li><a href="">QUID</a></li>
+            <li><a href="">PRO</a></li>
+            <li><a href="">QUO</a></li>
+          </ul>
+        </div>
+        <div id="theme">
+          <img
+            src="{{url_for('static', filename='dependencies/images/light_mode.png')}}"
+            alt="theme button"
+          />
+        </div>
+      </nav>
+    </header>
+
     <div id="file-upload-container">
       <h1>RPi Carousel Manager</h1>
 
-      <form action="/upload" enctype="multipart/form-data" method="post" id="upload-form">
+      <form
+        action="/upload"
+        enctype="multipart/form-data"
+        method="post"
+        id="upload-form"
+      >
         <label for="image">Choose File</label>
         <input type="file" name="file" id="image" accept="image/*" required />
         <button id="file-upload-button">Upload</button>
