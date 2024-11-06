@@ -1,16 +1,20 @@
 function changeMode(isDark) {
   const body = document.body;
-
+  const icon = document.getElementById("theme-button");
+  
   if (isDark) {
     body.classList.remove("dark-mode");
     body.classList.add("light-mode");
-    isDark = false;
+    icon.src = icon.getAttribute("data-dark-src");
+    icon.style.filter = "invert(100%)";
+    return false;
   } else {
     body.classList.add("dark-mode");
     body.classList.remove("light-mode");
-    isDark = true;
+    icon.src = icon.getAttribute("data-light-src");
+    icon.style.filter = "invert(0%)";
+    return true;
   }
-  return isDark;
 }
 
 function uploadFile(event) {
@@ -30,11 +34,11 @@ function uploadFile(event) {
       return response.text();
     })
     .then((result) => {
-      uploadStatus.textContent = result;
+    //   uploadStatus.textContent = result;
       uploadFeedback(true);
     })
     .catch((error) => {
-      uploadStatus.text = "Error uploading";
+    //   uploadStatus.text = "Error uploading";
       console.error("Error:", error);
       uploadFeedback(false);
     });
@@ -73,13 +77,11 @@ function uploadFeedback(success) {
 }
 
 function initEventListners() {
-  let isDark = false;
+  let isDark = true;
   // adds listener for display mode
-  document
-    .getElementById("display-mode-button")
-    .addEventListener("click", () => {
-      isDark = changeMode(isDark);
-    });
+  document.getElementById("theme").addEventListener("click", () => {
+    isDark = changeMode(isDark);
+  });
 
   // adds listener for upload form
   document.getElementById("upload-form").addEventListener("submit", uploadFile);

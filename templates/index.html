@@ -13,10 +13,16 @@
     />
     <title>RPi Carousel Manager</title>
   </head>
-  <body class="light-mode">
+  <body class="dark-mode">
     <header>
       <nav>
-        <div id="logo"><h2>Carousel</h1></div>
+        <div id="logo">
+          <img
+            src="{{ url_for('static', filename='dependencies/images/header_logo.png')}}"
+            alt=""
+          />
+        </div>
+
         <div id="links">
           <ul>
             <li><a href="">QUID</a></li>
@@ -24,9 +30,13 @@
             <li><a href="">QUO</a></li>
           </ul>
         </div>
+
         <div id="theme">
           <img
-            src="{{url_for('static', filename='dependencies/images/light_mode.png')}}"
+            id="theme-button"
+            data-light-src="{{ url_for('static', filename='dependencies/images/light_mode.png') }}"
+            data-dark-src="{{ url_for('static', filename='dependencies/images/dark_mode.png') }}"
+            src="{{ url_for('static', filename='dependencies/images/light_mode.png') }}"
             alt="theme button"
           />
         </div>
@@ -42,21 +52,29 @@
         method="post"
         id="upload-form"
       >
-        <label for="image">Choose File</label>
-        <input type="file" name="file" id="image" accept="image/*" required />
-        <button id="file-upload-button">Upload</button>
+        <div id="file-upload-container-buttons">
+          <span id="selector-button">
+            <label for="image" id="file-selector-button">Choose File</label>
+            <input
+              type="file"
+              name="file"
+              id="image"
+              accept="image/*"
+              required
+            />
+          </span>
+
+          <span id="file-upload-button">
+            <button>Upload</button>
+          </span>
+        </div>
       </form>
+
       <p id="upload-status"></p>
     </div>
 
-    <div id="display-mode-container">
-      <button>
-        <img
-          id="display-mode-button"
-          src="https://www.freeiconspng.com/thumbs/up-arrow-png/black-up-arrow-png-22.png"
-          alt="Dark mode enable/disable"
-        />
-      </button>
+    <div id="files-container">
+      <p>No Files Uploaded</p>
     </div>
   </body>
 
